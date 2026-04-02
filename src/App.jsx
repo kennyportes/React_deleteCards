@@ -6,7 +6,7 @@ import './App.css'
 import Form from './components/Form'
 import Child from './components/Child'
 import Card from './components/Card'
-
+import React from "react"
 // STATEFUL FUNCTIONAL COMPONENT
 
 // function App() {
@@ -85,29 +85,176 @@ import Card from './components/Card'
 //   );
 // }
 
-function App(){
-  const[cards, setCards] = useState([]);
+// CLASS COMPONENT
 
-  function addCard(){
-    setCards ([...cards, "New card"]);
+// class App extends React.Component {
+// render(){
+//   return <h1>Hello from class componet</h1>
+//  }
+// }
+
+// STATE IN CLASS COMPONENT
+
+// class Counter extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {count: 0}; // initial
+
+//   }
+//   render(){
+//     return(
+//       <>
+//         <h2>Count:{this.state.count}</h2>
+//         <button onClick={() => this.setState({count: this.state.count +1})}>Increase</button>
+//       </>
+//     )
+//   }
+// }
+
+//  EVENT HANDLING IN CLASS COMPONENT:
+
+// class ButtonClick extends React.Component{
+
+//   handleClick(){
+//     alert("Button clicked!");
+//   }
+
+//   render(){
+//     return <button onClick={() => this.handleClick()}>Click Me!</button>;
+//   }
+// }
+
+// REFS IN CLASS COMPONENT
+
+// class FocusInput extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.inputRef = React.createRef();
+//   }
+//   focusInput =() =>{
+//     this.inputRef.current.focus();
+//   };
+//   render(){
+//     return(
+//       <>
+//       <input ref ={this.inputRef} placeholder='Click button to focus' />
+//       <button onClick={this.focusInput}>FocusInput</button>
+//       </>
+//     )
+//   }
+// }
+
+//------------------------------------------------------------------------------------------------------
+
+// TASK 1: FIRST CLASS COMPONENT
+// class Welcome extends React.Component{
+//   render(){
+//     return(
+//       <>
+//       <h1>Welcome to React Class</h1>
+//       </>
+//     )
+//   }
+// }
+// export default Welcome;
+
+// TASK 2: STATE IN CLASS COMPONENT
+// class Counter extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {count: 0};
+//   }
+  
+//   render(){
+//     return(
+//       <>
+//       <h2>Count: {this.state.count}</h2>
+//       <button onClick={() => this.setState({count: this.state.count +1})}>Increase</button>
+//       <button onClick={() => this.setState({ count: 0 })}>Reset</button>
+//       </>
+//     )
+//   } 
+// };
+
+// export default Counter;
+
+// TASK 3: EVENT HANDLING
+
+// class Message extends React.Component{
+//   buttonClick(){
+//     alert("Button Was Clicked!");
+//   }
+//   render(){
+//     return(
+//       <>
+//       <h3>Click the button</h3>
+//       <button onClick={() => this.buttonClick()}>Click Here</button>
+//       </>
+//     )
+//   }
+// }
+
+// export default Message;
+
+// TASK 4: REFS IN CLASS COMPONENT
+
+// class InputFocus extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.refInput = React.createRef();
+//   }
+//   focusInput = () => {
+//     this.refInput.current.focus();
+//   };
+
+//   render(){
+//     return(
+//       <>
+//       <input ref = {this.refInput} placeholder='Click Button To Focus' />
+//       <button onClick = {this.focusInput} >Click Here</button>
+//       </>
+//     )
+//   }
+// }
+
+// export default InputFocus;
+
+
+// Bonus Task 
+
+class InteractiveInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { displayText: "" };
+    this.inputRef = React.createRef();
   }
 
-  function deleteCard(indexToDelete){
-    const updatedCards = cards.filter((_,index) => index !== indexToDelete);
-    setCards(updatedCards);
+  handleInputChange = (event) => {
+    this.setState({ displayText: event.target.value });
+  };
+
+  handleFocus = () => {
+    this.inputRef.current.focus();
+  };
+
+  render() {
+    return (
+      <>
+        <h2>View your Input Below</h2>
+        
+        <input 
+          ref={this.inputRef}
+          type="text"
+          value={this.state.displayText}
+          onChange={this.handleInputChange}
+          placeholder="Type something..."
+        />
+        <button onClick={this.handleFocus}>Focus Input</button>
+        <p>{this.state.displayText}</p>
+      </>
+    );
   }
- 
-return (
-  <>
-  <button onClick={addCard}>Add Card</button>
-  {cards.map((card, index) => (
-    <Card 
-    key={index} 
-    name={card} 
-    index={index}
-    onDelete={() => deleteCard(index)} />
-  ))}
-  </>
-);
 }
-export default App
+
+export default InteractiveInput;
+
