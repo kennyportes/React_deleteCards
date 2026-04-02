@@ -249,7 +249,9 @@ class InteractiveInput extends React.Component {
           onChange={this.handleInputChange}
           placeholder="Type something..."
         />
+
         <button onClick={this.handleFocus}>Focus Input</button>
+
         <p>{this.state.displayText}</p>
       </>
     );
@@ -258,3 +260,78 @@ class InteractiveInput extends React.Component {
 
 export default InteractiveInput;
 
+/* 
+
+MCQ's:
+
+1. What is a class component in React?
+A. A function
+B. A JavaScript class that extends React.Component
+C. A CSS class
+D. A HTML element
+Answer: B
+
+2. Which method is required in every class component?
+A. start()
+B. render()
+C. display()
+D. show()
+Answer: B
+
+3. How do you initialize state in a class component?
+A. this.data = {}
+B. this.state = {}
+C. state = {}
+D. setState()
+Answer: B
+
+4. What does setState() do?
+A. Deletes state
+B. Updates state and re-renders UI
+C. Creates component
+D. Stops rendering
+Answer: B
+
+5. Which keyword is used to access state?
+A. state
+B. this.state
+C. props
+D. this.props
+Answer: C
+
+6. How do you handle click events in class components?
+A. onClick="handleClick"
+B. onClick={handleClick}
+C. click(handleClick)
+D. event={handleClick}
+Answer: B
+
+7. What is the purpose of constructor(props)?
+A. To render UI
+B. To initialize state
+C. To handle events
+D. To create JSX
+Answer: B
+
+8. What is super(props) used for?
+A. To delete props
+B. To call parent constructor
+C. To create state
+D. To render UI
+Answer: B
+
+9. What is a ref in React?
+A. A variable
+B. A function
+C. A way to access DOM elements
+D. A state
+Answer: C
+
+10. How do you create a ref in class components?
+A. useRef()
+B. createRef()
+C. new Ref()
+D. getRef()
+Answer: B
+
+*/
